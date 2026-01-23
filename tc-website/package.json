@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:tc-website": "node dist/tc-website/server/server.mjs"
+    "serve:ssr:tc-website": "node dist/tc-website/server/server.mjs",
+    "build:gh": "ng build --base-href=/ubc_tc/",
+    "predeploy": "node scripts/prepare-spa-404.js",
+    "deploy": "npm run build:gh && npm run predeploy && npx gh-pages -d dist/tc-website/browser"
   },
   "prettier": {
     "printWidth": 100,

@@ -12,7 +12,7 @@ import type { EventItem } from '../../models/event';
     template: `
     <section class="container mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div>
-            <img src="/assets/hero.png" alt="Tennis player" class="w-4/5 mx-auto rounded-lg shadow-lg" />
+            <img src="assets/hero.png" alt="Tennis player" class="w-4/5 mx-auto rounded-lg shadow-lg" />
         </div>
         <div>
             <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-[color:#0b1a2e]">
