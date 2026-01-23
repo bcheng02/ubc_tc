@@ -1,0 +1,27 @@
+<div class="gallery-page">
+  <!-- Banner Section -->
+  <div class="gallery-banner">
+    <div class="container">
+      <h1 class="gallery-banner-title">Gallery</h1>
+      <p class="gallery-banner-subtitle">Capturing moments from tournaments, social events, and training sessions.</p>
+    </div>
+  </div>
+
+  <!-- Photo Collage -->
+  <div class="container py-10">
+    <div class="gallery-collage">
+      <div *ngFor="let image of galleryImages; let i = index" 
+           [class]="'gallery-item gallery-item-' + (i % 6 + 1)"
+           class="gallery-item-wrapper">
+        <div class="gallery-image-container">
+          <img [src]="image.url" [alt]="image.alt" class="gallery-image" />
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span *ngIf="image.event" class="gallery-category">{{ image.event }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

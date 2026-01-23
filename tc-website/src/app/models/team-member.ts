@@ -1,7 +1,8 @@
 export interface TeamMember {
     id: string;
     name: string;
-    role: string;
+    year: string; // e.g., 'Fourth Year', 'Second Year'
+    position: string; // Position in the club
     photoUrl: string;
-    bio?: string;
+    statement: string; // Personal statement
 }
