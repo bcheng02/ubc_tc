@@ -1,3 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import "tailwindcss";
+
+/* Global theme and base styles */
+:root {
+    --ubc-deep-blue: #0b1a2e;
+    /* Dark navy */
+    --ubc-blue-700: #1a365d;
+    /* Deep tennis blue */
+    --ubc-blue-600: #1d4ed8;
+    /* Primary blue */
+    --ubc-blue-500: #2563eb;
+    /* Accent blue */
+    --ubc-blue-300: #60a5fa;
+    /* Light accent blue */
+    --ubc-surface: #ffffff;
+    /* White surface */
+    --ubc-text: #0b1a2e;
+    /* Dark text */
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--ubc-surface);
+    color: var(--ubc-text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+        Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Utility helpers */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--ubc-blue-700), var(--ubc-blue-500));
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: transform 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-cta {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: transform 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(26, 54, 93, .40);
+}
+
+.btn-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(22, 163, 74, .35);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    opacity: .95;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid rgba(29, 78, 216, 0.12);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Simple fade in up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp .6s ease both;
+}
