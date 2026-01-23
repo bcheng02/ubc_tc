@@ -1,0 +1,40 @@
+<div class="merch-page">
+  <!-- Banner Section -->
+  <div class="merch-banner">
+    <div class="container">
+      <h1 class="merch-banner-title">Merchandise</h1>
+      <p class="merch-banner-subtitle">Rep your UBC Tennis Club merch around campus and hitting sessions</p>
+    </div>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="container py-10">
+    <div *ngIf="products.length === 0" class="merch-empty">
+      <div class="merch-empty-icon">🛍️</div>
+      <h2 class="merch-empty-title">Coming Soon</h2>
+      <p class="merch-empty-text">Our merchandise collection is being prepared. Check back soon for exclusive UBC Tennis Club gear!</p>
+    </div>
+
+    <div *ngIf="products.length > 0" class="merch-grid">
+      <div *ngFor="let product of products" class="merch-card">
+        <div class="merch-image-container">
+          <img [src]="product.imageUrl" [alt]="product.name" class="merch-image" />
+          <div *ngIf="product.comingSoon" class="merch-badge">Coming Soon</div>
+        </div>
+        <div class="merch-content">
+          <h3 class="merch-name">{{ product.name }}</h3>
+          <div class="merch-price">{{ formatPrice(product.price) }}</div>
+          <div *ngIf="product.sizes && product.sizes.length > 0" class="merch-sizes">
+            <span class="merch-sizes-label">Sizes:</span>
+            <div class="merch-sizes-list">
+              <span *ngFor="let size of product.sizes" class="merch-size-tag">{{ size }}</span>
+            </div>
+          </div>
+          <button class="merch-button" [disabled]="product.comingSoon">
+            {{ product.comingSoon ? 'Coming Soon' : 'Add to Cart' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

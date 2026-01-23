@@ -1,0 +1,32 @@
+<div class="team-page">
+  <!-- Banner Section -->
+  <div class="team-banner">
+    <div class="container">
+      <h1 class="team-banner-title">Our Team</h1>
+      <p class="team-banner-subtitle">Meet the passionate individuals leading the UBC Tennis Club.</p>
+    </div>
+  </div>
+
+  <!-- Team Members Grid -->
+  <div class="container py-10">
+    <div *ngIf="teamMembers.length === 0" class="team-empty">
+      <div class="team-empty-icon">👥</div>
+      <h2 class="team-empty-title">Team Coming Soon</h2>
+      <p class="team-empty-text">Our team profiles are being prepared. Check back soon to meet the UBC Tennis Club leadership!</p>
+    </div>
+
+    <div *ngIf="teamMembers.length > 0" class="team-grid">
+      <div *ngFor="let member of teamMembers" class="team-card">
+        <div class="team-photo-container">
+          <img [src]="member.photoUrl" [alt]="member.name" class="team-photo" />
+        </div>
+        <div class="team-content">
+          <h3 class="team-name">{{ member.name }}</h3>
+          <div class="team-year">{{ member.year }}</div>
+          <div class="team-position">{{ member.position }}</div>
+          <p class="team-statement">{{ member.statement }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

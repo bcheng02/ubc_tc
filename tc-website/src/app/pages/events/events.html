@@ -1,0 +1,67 @@
+<div class="events-page">
+  <!-- Banner Section -->
+  <div class="events-banner">
+    <div class="container">
+      <h1 class="events-banner-title">Our Events</h1>
+      <p class="events-banner-subtitle">Join us for tournaments, hitting sessions, and social gatherings throughout the term.</p>
+    </div>
+  </div>
+
+  <!-- Events Grid -->
+  <div class="container py-10">
+    <div class="events-grid">
+      <div *ngFor="let event of upcomingEvents" class="event-card animate-in">
+        <div class="event-image-container">
+          <img [src]="event.imageUrl" [alt]="event.title" class="event-image" />
+          <div class="event-date-badge">
+            {{ formatDate(event.date) }}
+          </div>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">{{ event.title }}</h3>
+          <div class="event-details">
+            <div class="event-detail-item">
+              <svg class="event-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              {{ event.time }}
+            </div>
+            <div class="event-detail-item">
+              <svg class="event-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              {{ event.location }}
+            </div>
+          </div>
+          <p class="event-description">{{ event.description }}</p>
+          <button class="event-button" [class.event-button-disabled]="event.registrationStatus !== 'Open'">
+            {{ event.registrationStatus === 'Open' ? 'Register Now' : event.registrationStatus }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="pastEvents.length > 0" class="container mt-16 mb-10">
+    <h2 class="text-3xl font-bold text-[color:#0b1a2e] mb-6">Past Events</h2>
+    <div class="events-grid">
+      <div *ngFor="let event of pastEvents" class="event-card event-card-past">
+        <div class="event-image-container">
+          <img [src]="event.imageUrl" [alt]="event.title" class="event-image event-image-past" />
+          <div class="event-date-badge event-date-badge-past">
+            {{ formatDate(event.date) }}
+          </div>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">{{ event.title }}</h3>
+          <p class="event-description">{{ event.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="upcomingEvents.length === 0" class="container text-center py-16">
+    <p class="text-lg opacity-70">No upcoming events at this time. Check back soon!</p>
+  </div>
+</div>
