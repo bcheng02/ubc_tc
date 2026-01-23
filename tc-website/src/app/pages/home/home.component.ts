@@ -10,7 +10,7 @@ import { NgIf } from '@angular/common';
     template: `
     <section class="container mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div>
-            <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=1200&auto=format&fit=crop" alt="Tennis play" class="w-full h-[380px] md:h-[420px] object-cover rounded-lg shadow-lg" />
+            <img src="/assets/hero.png" alt="Tennis player" class="w-4/5 mx-auto rounded-lg shadow-lg" />
         </div>
         <div>
             <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-[color:#0b1a2e]">
