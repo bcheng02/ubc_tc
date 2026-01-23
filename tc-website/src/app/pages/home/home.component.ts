@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { EVENTS } from '../../data/events';
+import type { EventItem } from '../../models/event';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [RouterLink, FormsModule, NgIf],
+    imports: [RouterLink, FormsModule, NgIf, NgFor, DatePipe],
     template: `
     <section class="container mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div>
@@ -23,37 +25,77 @@ import { NgIf } from '@angular/common';
         </div>
     </section>
 
+    <section class="section-blue mt-12 py-16" >
+        <div class="container text-center">
+            <h2 class="text-3xl font-extrabold">UBC Tennis Circle by the <span class="text-blue-300">Numbers</span></h2>
+            <p class="mt-2 opacity-90">We're proud of what we've built together. Here's a snapshot of our vibrant community.</p>
+            <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="card-ghost p-6">
+                    <div class="stat-icon w-10 h-10 rounded-full mx-auto mb-3"></div>
+                    <div class="text-3xl font-extrabold">500+</div>
+                    <div class="text-sm opacity-80">Active Members</div>
+                </div>
+                <div class="card-ghost p-6">
+                    <div class="stat-icon w-10 h-10 rounded-full mx-auto mb-3"></div>
+                    <div class="text-3xl font-extrabold">50+</div>
+                    <div class="text-sm opacity-80">Events Per Year</div>
+                </div>
+                <div class="card-ghost p-6">
+                    <div class="stat-icon w-10 h-10 rounded-full mx-auto mb-3"></div>
+                    <div class="text-3xl font-extrabold">{{ yearsRunning }}</div>
+                    <div class="text-sm opacity-80">Years Running</div>
+                </div>
+                <div class="card-ghost p-6">
+                    <div class="stat-icon w-10 h-10 rounded-full mx-auto mb-3"></div>
+                    <div class="text-3xl font-extrabold">12</div>
+                    <div class="text-sm opacity-80">Partner Sponsors</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Upcoming Events -->
     <section class="container mt-16">
-        <div class="font-semibold text-xl mb-4 text-[color:#0b1a2e]">Why Join Us?</div>
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="card p-5">
-                <div class="text-2xl font-extrabold text-blue-600">15+ Tournaments</div>
-                <div class="text-sm opacity-80 mt-1">Hosted annually with prizes</div>
-            </div>
-            <div class="card p-5">
-                <div class="text-2xl font-extrabold text-blue-600">500+ Members</div>
-                <div class="text-sm opacity-80 mt-1">Active community on campus</div>
-            </div>
-            <div class="card p-5">
-                <div class="text-2xl font-extrabold text-blue-600">Social Events</div>
-                <div class="text-sm opacity-80 mt-1">Weekly mixers and gatherings</div>
-            </div>
-            <div class="card p-5">
-                <div class="text-2xl font-extrabold text-blue-600">Skill Levels</div>
-                <div class="text-sm opacity-80 mt-1">Beginner to competitive tiers</div>
+        <div class="flex items-center justify-between mb-4">
+            <div class="font-semibold text-xl text-[color:#0b1a2e]">Upcoming Events</div>
+            <a routerLink="/events" class="text-blue-600 font-semibold hover:underline">View all</a>
+        </div>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="card p-5" *ngFor="let e of events">
+                <div class="text-sm font-semibold text-blue-600">{{ e.date | date:'MMM d, y' }} • {{ e.time }}</div>
+                <div class="text-lg font-extrabold mt-1">{{ e.title }}</div>
+                <div class="text-sm opacity-80 mt-1">{{ e.location }}</div>
+                <div class="mt-3 flex gap-3">
+                    <a routerLink="/events" class="btn-primary">Details</a>
+                    <a routerLink="/coming-soon" class="btn-cta">Register</a>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="container mt-16 grid md:grid-cols-2 gap-8">
         <div class="card p-6">
-            <div class="font-semibold mb-2 text-[color:#0b1a2e]">Stay in the Loop</div>
-            <p class="text-sm opacity-80">Get the latest updates on tournament registrations, social mixers, and exclusive member perks delivered to your inbox.</p>
-            <form class="flex gap-3 mt-3" (submit)="$event.preventDefault()">
-                <input [(ngModel)]="email" name="email" type="email" placeholder="you@ubc.ca" class="flex-1 px-3 py-2 rounded border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400" />
-                <button class="btn-primary" (click)="subscribe()">Join Mailing List</button>
+            <div class="font-semibold mb-2 text-[color:#0b1a2e]">Join the Mailing List</div>
+            <p class="text-sm opacity-80">Submit your details to our Google Form. Required: Full name, Student Number, Email. Optional: Questions/Comments.</p>
+            <form class="grid gap-3 mt-3" action="https://docs.google.com/forms/d/e/1FAIpQLSfBkJ5mGsncq9e4zNz-POEX2W1qscYk-F49GD7YLUjI1QK0QQ/formResponse" method="POST" target="_blank" rel="noopener noreferrer">
+                <div class="grid gap-1">
+                    <label class="text-sm font-semibold">Full name (First, Last) *</label>
+                    <input [attr.name]="entryFullNameId" type="text" required placeholder="Jane Doe" class="px-3 py-2 rounded border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                </div>
+                <div class="grid gap-1">
+                    <label class="text-sm font-semibold">Student Number *</label>
+                    <input [attr.name]="entryStudentNumberId" type="text" required placeholder="12345678" class="px-3 py-2 rounded border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                </div>
+                <div class="grid gap-1">
+                    <label class="text-sm font-semibold">Email *</label>
+                    <input [attr.name]="entryEmailId" type="email" required placeholder="you@ubc.ca" class="px-3 py-2 rounded border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                </div>
+                <div class="grid gap-1">
+                    <label class="text-sm font-semibold">Questions/Comments</label>
+                    <textarea [attr.name]="entryCommentsId" rows="3" placeholder="Optional" class="px-3 py-2 rounded border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+                </div>
+                <button class="btn-primary justify-center" type="submit">Submit</button>
             </form>
-            <div *ngIf="subscribed" class="text-sm mt-2 text-blue-600">Thanks! You're on the list.</div>
         </div>
         <div class="card p-6">
             <div class="font-semibold mb-2 text-[color:#0b1a2e]">Get in Touch</div>
@@ -70,12 +112,22 @@ import { NgIf } from '@angular/common';
     `,
 })
 export class HomeComponent {
+    // Google Form entry IDs (replace with actual entry.<id> values)
+    entryFullNameId = 'entry.X_fullName';
+    entryStudentNumberId = 'entry.X_studentNumber';
+    entryEmailId = 'entry.X_email';
+    entryCommentsId = 'entry.X_comments';
+    events: EventItem[] = EVENTS
+        .filter(e => e.registrationStatus === 'Open')
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+        .slice(0, 3);
     email = '';
     subscribed = false;
     contactName = '';
     contactEmail = '';
     contactMessage = '';
     contactSent = false;
+    yearsRunning = new Date().getFullYear() - 2016;
 
     subscribe() {
         if (this.email.includes('@')) {

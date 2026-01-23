@@ -6,26 +6,32 @@ import { RouterLink } from '@angular/router';
     standalone: true,
     imports: [RouterLink],
     template: `
-    <footer class="mt-16 border-t border-white/10 bg-[color:rgba(10,19,35,0.6)]">
-      <div class="container py-8 grid md:grid-cols-3 gap-8 text-sm">
-        <div>
-          <div class="font-semibold mb-2">UBC Tennis Club</div>
-          <p class="opacity-80">Building a welcoming, energetic tennis community at UBC.</p>
+    <footer class="sticky mt-16 border-t border-white/10 bg-[color:#0b1a2e] text-white">
+      <div class="container py-12 grid md:grid-cols-3 gap-8 text-sm justify-items-start">
+        <div class="text-center md:text-left">
+          <div class="text-xl font-extrabold tracking-wide">UBC TENNIS CIRCLE</div>
+          <p class="mt-2 opacity-80 max-w-md">The premier community for tennis enthusiasts at the University of British Columbia.</p>
         </div>
-        <div>
+        <div class="text-center md:text-left">
           <div class="font-semibold mb-2">Quick Links</div>
           <ul class="space-y-1 opacity-90">
+            <li><a routerLink="/" class="hover:text-blue-300">Home</a></li>
             <li><a routerLink="/events" class="hover:text-blue-300">Events</a></li>
+            <li><a routerLink="/gallery" class="hover:text-blue-300">Gallery</a></li>
             <li><a routerLink="/merch" class="hover:text-blue-300">Merch</a></li>
+            <li><a routerLink="/team" class="hover:text-blue-300">Team</a></li>
           </ul>
         </div>
-        <div>
-          <div class="font-semibold mb-2">We’re Hiring</div>
-          <p class="opacity-80">Passionate about tennis and community? Join our exec team.</p>
-          <a routerLink="/team" class="btn-primary mt-3 inline-block">Join the Team</a>
+        <div class="text-center md:text-left">
+          <div class="font-semibold mb-2">Connect</div>
+          <ul class="space-y-1 opacity-90">
+            <li><a href="https://www.instagram.com/ubctenniscircle/?hl=en" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300">Instagram</a></li>
+            <li><a href="https://www.facebook.com/groups/UBCTennisCircle" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300">Facebook</a></li>
+            <li><a href="https://discord.com/invite/WHt4q3bnHF" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300">Discord</a></li>
+          </ul>
         </div>
       </div>
-      <div class="container py-4 text-xs opacity-70 border-t border-white/10">© {{ year }} UBC Tennis Club</div>
+      <div class="container py-6 text-xs opacity-70 border-t border-white/10 text-center">© {{ year }} UBC Tennis Club. All rights reserved.</div>
     </footer>
   `,
 })

@@ -45,7 +45,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--ubc-blue-700), var(--ubc-blue-500));
+    background: var(--ubc-blue-600);
     color: white;
     padding: 0.75rem 1.25rem;
     border-radius: 0.5rem;
@@ -90,6 +90,22 @@ body {
     border: 1px solid rgba(29, 78, 216, 0.12);
     border-radius: 0.75rem;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Stats section styles */
+.section-blue {
+    background: linear-gradient(135deg, var(--ubc-blue-700), var(--ubc-blue-500));
+    color: #ffffff;
+}
+
+.card-ghost {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.75rem;
+}
+
+.stat-icon {
+    background: rgba(96, 165, 250, 0.25);
 }
 
 /* Simple fade in up animation */
