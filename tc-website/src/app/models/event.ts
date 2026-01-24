@@ -1,5 +1,6 @@
 export type RegistrationStatus = 'Open' | 'Closed' | 'Full';
 
+
 export interface EventItem {
     id: string;
     title: string;
@@ -9,6 +10,8 @@ export interface EventItem {
     description: string;
     imageUrl: string;
     registrationStatus: RegistrationStatus;
+    memberPrice?: number; // Member price in dollars, optional
+    nonMemberPrice?: number; // Non-member price in dollars, optional
 }
 
 export function isPastEvent(e: EventItem): boolean {
@@ -16,3 +19,4 @@ export function isPastEvent(e: EventItem): boolean {
     const today = new Date();
     return d.getTime() < new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
 }
+

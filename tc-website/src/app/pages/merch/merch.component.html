@@ -16,7 +16,7 @@
     </div>
 
     <div *ngIf="products.length > 0" class="merch-grid">
-      <div *ngFor="let product of products" class="merch-card">
+      <div *ngFor="let product of products; let i = index" class="merch-card animate-in" [style.animation-delay]="(i * 0.1) + 's'">
         <div class="merch-image-container">
           <img [src]="product.imageUrl" [alt]="product.name" class="merch-image" />
           <div *ngIf="product.comingSoon" class="merch-badge">Coming Soon</div>

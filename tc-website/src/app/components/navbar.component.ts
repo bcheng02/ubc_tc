@@ -17,7 +17,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         <a routerLink="/events" routerLinkActive="text-blue-700 border-b-2 border-blue-600" class="text-gray-700 font-semibold text-base md:text-lg hover:text-blue-600 transition-colors pb-1">Events</a>
         <a routerLink="/gallery" routerLinkActive="text-blue-700 border-b-2 border-blue-600" class="text-gray-700 font-semibold text-base md:text-lg hover:text-blue-600 transition-colors pb-1">Gallery</a>
         <a routerLink="/merch" routerLinkActive="text-blue-700 border-b-2 border-blue-600" class="text-gray-700 font-semibold text-base md:text-lg hover:text-blue-600 transition-colors pb-1">Merch</a>
-        <a routerLink="/team" routerLinkActive="text-blue-700 border-b-2 border-blue-600" class="text-gray-700 font-semibold text-base md:text-lg hover:text-blue-600 transition-colors pb-1">Team</a>
+        <a routerLink="/about-us" routerLinkActive="text-blue-700 border-b-2 border-blue-600" class="text-gray-700 font-semibold text-base md:text-lg hover:text-blue-600 transition-colors pb-1">About Us</a>
       </nav>
     </div>
   </header>
