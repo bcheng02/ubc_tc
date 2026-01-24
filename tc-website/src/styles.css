@@ -29,8 +29,6 @@ html {
 
 body {
     margin: 0;
-    /* Offset for fixed navbar height */
-    padding-top: 5.5rem;
     background: var(--ubc-surface);
     color: var(--ubc-text);
     font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
@@ -44,20 +42,20 @@ body {
     font-weight: 800;
     color: var(--ubc-deep-blue);
     line-height: 1.15;
-  }
-  
-  .hero-subtitle-clean {
+}
+
+.hero-subtitle-clean {
     font-size: 1.05rem;
     color: rgba(11, 26, 46, 0.75);
     max-width: 480px;
-  }
-  
-  .hero-media img {
+}
+
+.hero-media img {
     width: 100%;
     max-width: 520px;
     margin-left: auto;
-  }
-  
+}
+
 /* Utility helpers */
 .container {
     max-width: 1200px;
@@ -82,26 +80,28 @@ body {
 
 
 .btn-primary {
-  background-color: var(--ubc-blue-600);
-  color: white;
-  font-weight: 600;
-  transition: all 200ms ease;
+    background-color: var(--ubc-blue-600);
+    color: white;
+    font-weight: 600;
+    transition: all 200ms ease;
 }
+
 .btn-primary:hover {
-  transform: translateY(-1px);
-  opacity: 0.95;
+    transform: translateY(-1px);
+    opacity: 0.95;
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
-  font-weight: 600;
-  transition: all 200ms ease;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    font-weight: 600;
+    transition: all 200ms ease;
 }
+
 .btn-secondary:hover {
-  background-color: white;
-  color: var(--ubc-deep-blue);
+    background-color: white;
+    color: var(--ubc-deep-blue);
 }
 
 .card {
@@ -121,90 +121,93 @@ body {
 .section-blue {
     background: linear-gradient(135deg, var(--ubc-blue-700), var(--ubc-blue-500));
     color: #ffffff;
-    }
-    .card-ghost {
+}
+
+.card-ghost {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(37, 99, 235, 0.1);
     border-radius: 0.75rem;
     backdrop-filter: blur(10px);
     transition: all 300ms ease;
-    }
-    
-    .card-ghost:hover {
+}
+
+.card-ghost:hover {
     background: rgba(255, 255, 255, 0.08);
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(29, 78, 216, 0.15);
-    }
-    
-    .stat-icon {
+}
+
+.stat-icon {
     background: rgba(37, 99, 235, 0.15);
     border: 1px solid rgba(37, 99, 235, 0.2);
     transition: all 300ms ease;
-    }
-    
-    .card-ghost:hover .stat-icon {
+}
+
+.card-ghost:hover .stat-icon {
     background: rgba(37, 99, 235, 0.25);
     transform: scale(1.1);
-    }
-    
-    /* Stats infinite scroller - FIXED */
-    .stats-scroller {
+}
+
+/* Stats infinite scroller - FIXED */
+.stats-scroller {
     overflow: hidden;
     position: relative;
     width: 100%;
-    }
-    
-    .stats-track {
+}
+
+.stats-track {
     display: flex;
     width: max-content;
     animation: stats-scroll 20s linear infinite;
-    }
-    
-    .stats-track:hover {
+}
+
+.stats-track:hover {
     animation-play-state: paused;
-    }
-    
-    .stats-group {
+}
+
+.stats-group {
     display: flex;
     gap: 1.5rem;
     padding: 0 0.75rem;
-    }
-    
-    .card-ghost {
+}
+
+.card-ghost {
     min-width: 180px;
     flex-shrink: 0;
+}
+
+@keyframes stats-scroll {
+    0% {
+        transform: translateX(0);
     }
-    
+
+    100% {
+        transform: translateX(calc(-50% - 0.75rem));
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-group {
+        gap: 1rem;
+    }
+
+    .card-ghost {
+        min-width: 150px;
+        padding: 1rem;
+    }
+
     @keyframes stats-scroll {
         0% {
             transform: translateX(0);
         }
+
         100% {
-            transform: translateX(calc(-50% - 0.75rem));
+            transform: translateX(calc(-50% - 0.5rem));
         }
     }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .stats-group {
-            gap: 1rem;
-        }
-        
-        .card-ghost {
-            min-width: 150px;
-            padding: 1rem;
-        }
-        
-        @keyframes stats-scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-50% - 0.5rem));
-            }
-        }
-    }
-    
+}
+
 
 /* Simple fade in up animation */
 @keyframes fadeInUp {
