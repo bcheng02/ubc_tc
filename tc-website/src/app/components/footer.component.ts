@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `
     <footer class="sticky mt-16 border-t border-white/10 bg-[color:#0b1a2e] text-white">
-      <div class="container py-12 grid md:grid-cols-3 gap-8 text-sm justify-items-start">
+      <div class="container py-12 grid grid-cols-3 gap-8 text-sm justify-items-center md:justify-items-start">
         <div class="text-center md:text-left">
           <img src="/assets/logo_bg_removed.png" alt="UBC Tennis Circle Logo" class="h-20 my-4 mx-auto md:mx-0" />
         </div>
