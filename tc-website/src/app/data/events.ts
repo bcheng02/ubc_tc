@@ -1,16 +1,39 @@
 import { EventItem } from '../models/event';
 
 export const EVENTS: EventItem[] = [
-
+    {
+        id: 'e28',
+        title: 'UBC AMS Club Fair',
+        date: '2026-01-29',
+        time: '11:00 AM – 4:00 PM',
+        location: 'AMS Nest Booth A24',
+        description: 'Learn more about the club, our events, and to meet our execs! ',
+        imageUrl: '',
+        registrationStatus: 'Open',
+        memberPrice: 0,
+        nonMemberPrice: 0,
+    },
+    {
+        id: 'e27',
+        title: 'UBC AMS Club Fair',
+        date: '2026-01-26',
+        time: '11:00 AM – 4:00 PM',
+        location: 'AMS Nest Booth B23',
+        description: 'Learn more about the club, our events, and to meet our execs! ',
+        imageUrl: '',
+        registrationStatus: 'Open',
+        memberPrice: 0,
+        nonMemberPrice: 0,
+    },
     {
         id: 'e26',
         title: 'Prime Member Beginner Session 2',
         date: '2026-01-27',
         time: '2:00 PM – 3:00 PM',
         location: 'Totem Outdoor Courts',
-        description: 'PRIME MEMBERS ONLY!!',
+        description: 'PRIME MEMBERS ONLY!!\n',
         imageUrl: '',
-        registrationStatus: 'Open',
+        registrationStatus: 'Full',
         memberPrice: 0,
         nonMemberPrice: -1,
     },
