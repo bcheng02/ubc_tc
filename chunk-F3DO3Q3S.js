@@ -1,0 +1,1 @@
+var t=Array.from({length:20}).map((r,e)=>({id:`g${e+1}`,url:`https://picsum.photos/seed/gallery${e+1}/900/700`,alt:`UBC Tennis Club photo ${e+1}`,category:e%3===0?"Tournaments":e%3===1?"Social":"Training",event:e%2===0?"UBC Open":"Club Night"}));export{t as a};

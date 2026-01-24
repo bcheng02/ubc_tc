@@ -1,0 +1,1 @@
+import{Ga as e}from"./chunk-2HZDMFSY.js";var t=class o{static \u0275fac=function(n){return new(n||o)};static \u0275cmp=e({type:o,selectors:[["app-coming-soon"]],decls:0,vars:0,template:function(n,s){},encapsulation:2})};export{t as ComingSoonComponent};
