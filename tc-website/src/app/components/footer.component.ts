@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
             <li><a routerLink="/events" class="hover:text-blue-300">Events</a></li>
             <li><a routerLink="/gallery" class="hover:text-blue-300">Gallery</a></li>
             <li><a routerLink="/merch" class="hover:text-blue-300">Merch</a></li>
-            <li><a routerLink="/team" class="hover:text-blue-300">Team</a></li>
+            <li><a routerLink="/about-us" class="hover:text-blue-300">About Us</a></li>
           </ul>
         </div>
         <div class="text-center md:text-left">

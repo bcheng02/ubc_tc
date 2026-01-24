@@ -8,16 +8,42 @@
   </div>
 
   <!-- Photo Collage -->
-  <div class="container py-10">
-    <div class="gallery-collage">
-      <div *ngFor="let image of galleryImages; let i = index" 
-           [class]="'gallery-item gallery-item-' + (i % 6 + 1)"
-           class="gallery-item-wrapper">
-        <div class="gallery-image-container">
-          <img [src]="image.url" [alt]="image.alt" class="gallery-image" />
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <span *ngIf="image.event" class="gallery-category">{{ image.event }}</span>
+  <div class="container">
+    <div class="gallery-content-wrapper">
+      <!-- Filter Dropdown -->
+      <div class="gallery-filter-sidebar">
+        <div class="gallery-filter-dropdown">
+          <button class="gallery-filter-trigger" (click)="toggleDropdown()">
+            <span>Filter</span>
+            <svg class="gallery-filter-arrow" [class.open]="isDropdownOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="gallery-filter-menu" [class.open]="isDropdownOpen">
+            <button 
+              *ngFor="let filter of availableFilters" 
+              [class.active]="selectedFilter === filter"
+              (click)="filterByEvent(filter)"
+              class="gallery-filter-option">
+              {{ filter }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Collage -->
+      <div class="gallery-collage-container">
+        <div class="gallery-collage">
+          <div *ngFor="let image of filteredImages; let i = index" 
+               [class]="'gallery-item-wrapper gallery-item-' + ((i % 6) + 1) + ' animate-in'"
+               [style.animation-delay]="(i * 0.1) + 's'">
+            <div class="gallery-image-container">
+              <img [src]="image.url" [alt]="image.alt" class="gallery-image" />
+              <div class="gallery-overlay">
+                <div class="gallery-info">
+                  <span *ngIf="image.event" class="gallery-category">{{ image.event }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

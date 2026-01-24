@@ -44,4 +44,17 @@ export class EventsComponent implements OnInit {
         return 'bg-gray-100 text-gray-700';
     }
   }
+
+  formatPrice(price?: number): string {
+    if (price === undefined || price === null) {
+      return 'Free';
+    }
+    if (price === 0) {
+      return 'Free';
+    }
+    if (price === -1) {
+      return 'Unavailable';
+    }
+    return `$${price.toFixed(2)}`;
+  }
 }

@@ -10,7 +10,7 @@
   <!-- Events Grid -->
   <div class="container py-10">
     <div class="events-grid">
-      <div *ngFor="let event of upcomingEvents" class="event-card animate-in">
+      <div *ngFor="let event of upcomingEvents; let i = index" class="event-card animate-in" [style.animation-delay]="(i * 0.1) + 's'">
         <div class="event-image-container">
           <img [src]="event.imageUrl" [alt]="event.title" class="event-image" />
           <div class="event-date-badge">
@@ -32,6 +32,16 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
               </svg>
               {{ event.location }}
+            </div>
+            <div class="event-pricing">
+              <div class="event-price-item">
+                <span class="event-price-label">Member:</span>
+                <span class="event-price-value">{{ formatPrice(event.memberPrice) }}</span>
+              </div>
+              <div class="event-price-item">
+                <span class="event-price-label">Non-Member:</span>
+                <span class="event-price-value">{{ formatPrice(event.nonMemberPrice) }}</span>
+              </div>
             </div>
           </div>
           <p class="event-description">{{ event.description }}</p>

@@ -1,30 +1,54 @@
-<div class="team-page">
+<div class="about-page">
   <!-- Banner Section -->
-  <div class="team-banner">
+  <div class="about-banner">
     <div class="container">
-      <h1 class="team-banner-title">Our Team</h1>
-      <p class="team-banner-subtitle">Meet the passionate individuals leading the UBC Tennis Club.</p>
+      <h1 class="about-banner-title">About Us</h1>
+      <p class="about-banner-subtitle">Learn more about the UBC Tennis Club and the people behind it.</p>
     </div>
   </div>
 
-  <!-- Team Members Grid -->
+  <!-- Who We Are Section -->
   <div class="container py-10">
-    <div *ngIf="teamMembers.length === 0" class="team-empty">
-      <div class="team-empty-icon">👥</div>
-      <h2 class="team-empty-title">Team Coming Soon</h2>
-      <p class="team-empty-text">Our team profiles are being prepared. Check back soon to meet the UBC Tennis Club leadership!</p>
+    <div class="about-section animate-in">
+      <div class="about-section-image">
+        <img src="https://picsum.photos/seed/who-we-are/600/400" alt="UBC Tennis Club members" class="about-image" />
+      </div>
+      <div class="about-section-content">
+        <h2 class="about-section-title">Who We Are</h2>
+        <p class="about-section-text">The UBC Tennis Club is a vibrant community of tennis enthusiasts at the University of British Columbia. We welcome players of all skill levels, from beginners picking up a racquet for the first time to competitive players looking to improve their game. Our club is built on the principles of inclusivity, sportsmanship, and a shared passion for tennis.</p>
+      </div>
     </div>
 
-    <div *ngIf="teamMembers.length > 0" class="team-grid">
-      <div *ngFor="let member of teamMembers" class="team-card">
-        <div class="team-photo-container">
-          <img [src]="member.photoUrl" [alt]="member.name" class="team-photo" />
-        </div>
-        <div class="team-content">
-          <h3 class="team-name">{{ member.name }}</h3>
-          <div class="team-year">{{ member.year }}</div>
-          <div class="team-position">{{ member.position }}</div>
-          <p class="team-statement">{{ member.statement }}</p>
+    <!-- Our Mission Section -->
+    <div class="about-section about-section-mission animate-in">
+      <div class="about-section-content">
+        <h2 class="about-section-title">Our Mission</h2>
+        <p class="about-section-text">Our mission is to foster a welcoming and inclusive tennis community at UBC where students can develop their skills, build lasting friendships, and enjoy the sport we all love. We organize regular tournaments, social events, and training sessions to bring together tennis players from across campus and create memorable experiences both on and off the court.</p>
+      </div>
+      <div class="about-section-image">
+        <img src="https://picsum.photos/seed/our-mission/600/400" alt="Tennis community" class="about-image" />
+      </div>
+    </div>
+
+    <!-- Meet the Team Section -->
+    <div class="about-team-section">
+      <h2 class="about-team-title">Meet the Team</h2>
+      <div *ngIf="teamMembers.length === 0" class="team-empty">
+        <div class="team-empty-icon">👥</div>
+        <h3 class="team-empty-title">Team Coming Soon</h3>
+        <p class="team-empty-text">Our team profiles are being prepared. Check back soon!</p>
+      </div>
+
+      <div *ngIf="teamMembers.length > 0" class="team-grid">
+        <div *ngFor="let member of teamMembers" class="team-card animate-in">
+          <div class="team-photo-container">
+            <img [src]="member.photoUrl" [alt]="member.name" class="team-photo" />
+          </div>
+          <div class="team-content">
+            <h3 class="team-name">{{ member.name }}</h3>
+            <div class="team-year">{{ member.year }}</div>
+            <div class="team-position">{{ member.position }}</div>
+          </div>
         </div>
       </div>
     </div>
