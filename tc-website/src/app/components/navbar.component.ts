@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive, NgClass],
   template: `
-  <header class="sticky top-0 z-50 transition-colors duration-200" [ngClass]="scrolled ? 'bg-white/90 backdrop-blur' : 'bg-white'">
+  <header class="fixed top-0 left-0 right-0 z-50 transition-colors duration-200" [ngClass]="scrolled ? 'bg-white/90 backdrop-blur shadow-sm' : 'bg-transparent'">
     <div class="container flex items-center justify-between py-3">
       <a [routerLink]="['/']" class="flex items-center">
         <img src="assets/logo_bg_removed.png" alt="UBC Tennis Club Logo" class="h-20 w-20 object-contain" />

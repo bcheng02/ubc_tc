@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-footer',
-    standalone: true,
-    imports: [RouterLink],
-    template: `
+  selector: 'app-footer',
+  standalone: true,
+  imports: [RouterLink],
+  template: `
     <footer class="sticky mt-16 border-t border-white/10 bg-[color:#0b1a2e] text-white">
       <div class="container py-12 grid md:grid-cols-3 gap-8 text-sm justify-items-start">
         <div class="text-center md:text-left">
-          <div class="text-xl font-extrabold tracking-wide">UBC TENNIS CIRCLE</div>
-          <p class="mt-2 opacity-80 max-w-md">The premier community for tennis enthusiasts at the University of British Columbia.</p>
+          <img src="/assets/logo_bg_removed.png" alt="UBC Tennis Circle Logo" class="h-20 my-4 mx-auto md:mx-0" />
         </div>
         <div class="text-center md:text-left">
           <div class="font-semibold mb-2">Quick Links</div>

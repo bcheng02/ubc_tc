@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventItem, isPastEvent } from '../../models/event';
-import { EVENTS } from '../../data/events';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-events',
@@ -15,18 +15,20 @@ export class EventsComponent implements OnInit {
   upcomingEvents: EventItem[] = [];
   pastEvents: EventItem[] = [];
 
+  constructor(private data: DataService) { }
+
   ngOnInit() {
-    this.allEvents = EVENTS;
+    this.allEvents = this.data.events();
     this.upcomingEvents = this.allEvents.filter(e => !isPastEvent(e));
     this.pastEvents = this.allEvents.filter(e => isPastEvent(e));
   }
 
   formatDate(date: string | Date): string {
     const dateObj = typeof date === 'string' ? new Date(date) : date;
-    return dateObj.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric', 
-      year: 'numeric' 
+    return dateObj.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
     });
   }
 

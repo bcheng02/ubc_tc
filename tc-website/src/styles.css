@@ -29,6 +29,8 @@ html {
 
 body {
     margin: 0;
+    /* Offset for fixed navbar height */
+    padding-top: 5.5rem;
     background: var(--ubc-surface);
     color: var(--ubc-text);
     font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
@@ -58,7 +60,7 @@ body {
 }
 
 .btn-cta {
-    background: #1d4ed8;
+    background: var(--ubc-blue-600);
     color: white;
     padding: 0.75rem 1.25rem;
     border-radius: 0.5rem;
@@ -90,6 +92,12 @@ body {
     border: 1px solid rgba(29, 78, 216, 0.12);
     border-radius: 0.75rem;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(26, 54, 93, .18);
 }
 
 /* Stats section styles */
@@ -99,13 +107,49 @@ body {
 }
 
 .card-ghost {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: transparent;
+    border: none;
     border-radius: 0.75rem;
 }
 
 .stat-icon {
     background: rgba(96, 165, 250, 0.25);
+}
+
+/* Stats infinite scroller */
+.stats-scroller {
+    overflow: hidden;
+    position: relative;
+}
+
+.stats-track {
+    display: flex;
+    gap: 0;
+    width: 200%;
+    will-change: transform;
+    animation: stats-scroll 15s linear infinite;
+}
+
+.stats-group {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Ensure each stat has a consistent width for centering */
+.card-ghost {
+    min-width: 0;
+    flex: 0 0 25%;
+}
+
+@keyframes stats-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Simple fade in up animation */
