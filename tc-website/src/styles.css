@@ -226,6 +226,7 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .sponsor-card:hover {
@@ -235,9 +236,35 @@ body {
 }
 
 .sponsor-logo {
+    height: 100%;
+    width: auto;
     max-width: 100%;
-    max-height: 100%;
     object-fit: contain;
+}
+
+/* Specific adjustment: make Pacific Poke logo ~30% smaller */
+.sponsor-logo--pp-small {
+    height: 50%;
+}
+
+/* Make select logos appear larger inside their cards */
+.sponsor-logo--big {
+    transform: scale(1.2);
+}
+
+/* Extra-large bump for select marks */
+.sponsor-logo--xl {
+    transform: scale(1.35);
+}
+
+/* Extra-extra-large bump for select marks */
+.sponsor-logo--xxl {
+    transform: scale(1.5);
+}
+
+/* Slightly smaller logos */
+.sponsor-logo--sm {
+    transform: scale(0.9);
 }
 
 @keyframes sponsors-scroll {

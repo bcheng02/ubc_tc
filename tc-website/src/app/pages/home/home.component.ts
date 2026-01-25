@@ -107,92 +107,92 @@ import { DataService } from '../../services/data.service';
         <!-- First set of sponsors -->
         <div class="sponsors-group">
           <div class="sponsor-card">
-            <img src="assets/sponsors/juice-truck.png" alt="Juice Truck" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/juiceTruck.png" alt="Juice Truck" class="sponsor-logo sponsor-logo--big" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/jj-bean.png" alt="JJ Bean" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/JJBean.png" alt="JJ Bean" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/bean-around.png" alt="Bean Around The World" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/beanAroundTheWorld.png" alt="Bean Around The World" class="sponsor-logo sponsor-logo--xxl" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/guru.png" alt="Guru" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/guru.png" alt="Guru" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/body-energy.png" alt="Body Energy Club" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/bodyEnergyClub.png" alt="Body Energy Club" class="sponsor-logo sponsor-logo--big" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/hoochy-booch.png" alt="Hoochy Booch Kombucha" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/hoochyBooch.png" alt="Hoochy Booch Kombucha" class="sponsor-logo sponsor-logo--xxl" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/booster-juice.png" alt="Booster Juice" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/boosterJuice.avif" alt="Booster Juice" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/rain-shine.png" alt="Rain or Shine" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/rainOrShine.png" alt="Rain or Shine" class="sponsor-logo sponsor-logo--sm" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/glory-juice.png" alt="Glory Juice" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/gloryJuice.png" alt="Glory Juice" class="sponsor-logo sponsor-logo--xxl" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/poppi.png" alt="Poppi" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/poppi.svg" alt="Poppi" class="sponsor-logo sponsor-logo--sm" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/jo-deli.png" alt="Jo Deli" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/joDeli.avif" alt="Jo Deli" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/redbull.png" alt="Red Bull" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/redBull.png" alt="Red Bull" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/tea-dot.png" alt="Tea Dot" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/teadot.png" alt="Tea Dot" class="sponsor-logo sponsor-logo--xxl" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/pacific-poke.png" alt="Pacific Poke" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/pacificPoke.png" alt="Pacific Poke" class="sponsor-logo sponsor-logo--pp-small" />
           </div>
         </div>
 
         <!-- Duplicate set for seamless loop -->
         <div class="sponsors-group">
           <div class="sponsor-card">
-            <img src="assets/sponsors/juice-truck.png" alt="Juice Truck" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/juiceTruck.png" alt="Juice Truck" class="sponsor-logo sponsor-logo--big" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/jj-bean.png" alt="JJ Bean" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/JJBean.png" alt="JJ Bean" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/bean-around.png" alt="Bean Around The World" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/beanAroundTheWorld.png" alt="Bean Around The World" class="sponsor-logo sponsor-logo--xxl" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/guru.png" alt="Guru" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/guru.png" alt="Guru" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/body-energy.png" alt="Body Energy Club" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/bodyEnergyClub.png" alt="Body Energy Club" class="sponsor-logo sponsor-logo--big" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/hoochy-booch.png" alt="Hoochy Booch Kombucha" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/hoochyBooch.png" alt="Hoochy Booch Kombucha" class="sponsor-logo sponsor-logo--xxl" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/booster-juice.png" alt="Booster Juice" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/boosterJuice.avif" alt="Booster Juice" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/rain-shine.png" alt="Rain or Shine" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/rainOrShine.png" alt="Rain or Shine" class="sponsor-logo sponsor-logo--sm" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/glory-juice.png" alt="Glory Juice" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/gloryJuice.png" alt="Glory Juice" class="sponsor-logo sponsor-logo--xxl" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/poppi.png" alt="Poppi" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/poppi.svg" alt="Poppi" class="sponsor-logo sponsor-logo--sm" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/jo-deli.png" alt="Jo Deli" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/joDeli.avif" alt="Jo Deli" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/redbull.png" alt="Red Bull" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/redBull.png" alt="Red Bull" class="sponsor-logo" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/tea-dot.png" alt="Tea Dot" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/teadot.png" alt="Tea Dot" class="sponsor-logo sponsor-logo--xxl" />
           </div>
           <div class="sponsor-card">
-            <img src="assets/sponsors/pacific-poke.png" alt="Pacific Poke" class="sponsor-logo" />
+            <img src="assets/pages/partner logos/pacificPoke.png" alt="Pacific Poke" class="sponsor-logo sponsor-logo--pp-small" />
           </div>
         </div>
       </div>
