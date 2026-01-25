@@ -58,7 +58,7 @@ import { DataService } from '../../services/data.service';
             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
         </div>
-        <div class="text-2xl md:text-4xl font-bold text-white">200+</div>
+        <div class="text-2xl md:text-4xl font-bold text-white">150+</div>
         <div class="text-xs md:text-sm text-white/80 mt-1">Members</div>
       </div>
 
@@ -100,7 +100,7 @@ import { DataService } from '../../services/data.service';
 <!-- Sponsors Scroller Section -->
 <section class="section-white py-8">
   <div class="container text-center">
-    <h2 class="text-2xl font-bold text-[var(--ubc-deep-blue)] mb-6">Our Partners & Sponsors</h2>
+    <h2 class="text-xl font-semibold text-[var(--ubc-deep-blue)] mb-6">Our Partners & Sponsors</h2>
     <div class="sponsors-scroller mt-2 pb-2">
       <div class="sponsors-track" #sponsorsTrack>
         <!-- First set of sponsors -->
@@ -241,7 +241,7 @@ import { DataService } from '../../services/data.service';
                         </div>
                     </div>
                     <div class="mt-4 pt-3 border-t border-blue-100">
-                        <a routerLink="/events" class="btn-cta w-full text-center">Register</a>
+                        <a routerLink="/events" class="btn-cta w-full text-center">View Event</a>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@ import { DataService } from '../../services/data.service';
 
     <!-- Why Become a Member Section -->
     <section class="container mt-16">
-        <h2 class="text-3xl font-bold text-left text-[var(--ubc-deep-blue)] mb-8">Why Become a Member?</h2>
+        <h2 class="text-xl font-semibold text-left text-[var(--ubc-deep-blue)] mb-8">Why Become a Member?</h2>
         <div class="grid md:grid-cols-3 gap-6 max-w-full">
             <!-- Non-Member -->
             <div class="card p-6 flex flex-col">
@@ -418,13 +418,12 @@ import { DataService } from '../../services/data.service';
             </form>
         </div>
         <div class="flex flex-col gap-4">
-            <a routerLink="https://docs.google.com/forms/d/e/1FAIpQLScLBPwS5roY4Dc-vf0VB0WZO7MioNhUtXOfJiTGAdNUB2rkjg/viewform" class="group block rounded-lg bg-gradient-to-r from-[var(--ubc-blue-600)] to-[var(--ubc-blue-300)] text-white p-6 shadow flex items-center justify-between hover:opacity-95 hover:shadow-lg transition">
+            <a routerLink="/about-us" class="group block rounded-lg bg-gradient-to-r from-[var(--ubc-blue-600)] to-[var(--ubc-blue-300)] text-white p-6 shadow flex items-center justify-between hover:opacity-95 hover:shadow-lg transition">
                 <div>
-                    <div class="text-2xl md:text-3xl font-extrabold">Become a Member</div>
-                    <div class="text-sm opacity-90">Join the Circle — tap to sign up</div>
+                    <div class="text-2xl md:text-3xl font-extrabold">Learn More About Our Team</div>
                 </div>
                 <span class="inline-flex items-center gap-2 font-semibold">
-                    <span>Get Started</span>
+                    
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform group-hover:translate-x-0.5">
                         <polyline points="9 18 15 12 9 6"/>
                     </svg>
@@ -481,10 +480,12 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         const all = this.data.events();
+        const now = new Date();
         this.events = all
-            .filter(e => e.registrationStatus === 'Open')
-            .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-            .slice(0, 3);
+  .filter(e => new Date(e.date) >= now) // only future events
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()) // soonest first
+  .slice(0, 3);
+
     }
 
     subscribe() {

@@ -6,7 +6,7 @@ export const TEAM: TeamMember[] = [
         name: 'Selina Schmelcher', 
         year: 'Fourth Year',
         position: 'President', 
-        photoUrl: 'https://picsum.photos/seed/team1/400/400', 
+        photoUrl: 'assets/pages/team-photos/Selina.png', 
         statement: 'Leading the UBC Tennis Club has been an incredible journey. I\'m passionate about building a welcoming community where everyone can enjoy tennis, regardless of skill level.' 
     },
     { 
@@ -14,7 +14,7 @@ export const TEAM: TeamMember[] = [
         name: 'Katelyn Chan', 
         year: 'Fourth Year',
         position: 'VP Internal', 
-        photoUrl: 'https://picsum.photos/seed/team2/400/400', 
+        photoUrl: 'assets/pages/team-photos/Katelyn.png', 
         statement: 'I love organizing tournaments and social events that bring our community together. Tennis is more than a sport—it\'s about connection and fun!' 
     },
     { 
@@ -22,7 +22,7 @@ export const TEAM: TeamMember[] = [
         name: 'Kaasvi Bhatia', 
         year: 'Fourth Year',
         position: 'VP External', 
-        photoUrl: 'https://picsum.photos/seed/team3/400/400', 
+        photoUrl: 'assets/pages/team-photos/Kaasvi.png', 
         statement: 'Keeping everything running smoothly behind the scenes. I ensure our members have access to courts and facilities when they need them.' 
     },
     { 
@@ -30,7 +30,7 @@ export const TEAM: TeamMember[] = [
         name: 'Vedika Joshi', 
         year: 'Second Year',
         position: 'VP Marketing', 
-        photoUrl: 'https://picsum.photos/seed/team4/400/400', 
+        photoUrl: 'assets/pages/team-photos/vedika.png', 
         statement: 'I bring creativity to our brand and help share the amazing stories of our club members. Every match, every event, every moment matters.' 
     },
     { 
@@ -38,7 +38,7 @@ export const TEAM: TeamMember[] = [
         name: 'Jed Li', 
         year: 'Second Year',
         position: 'VP Admin', 
-        photoUrl: 'https://picsum.photos/seed/team5/400/400', 
+        photoUrl: 'assets/pages/team-photos/Jed.png', 
         statement: 'Managing our finances to ensure we can provide the best experience for all members. Every dollar goes back into making the club better.' 
     },
     { 
@@ -46,7 +46,7 @@ export const TEAM: TeamMember[] = [
         name: 'Shireen Tuli', 
         year: 'Third Year',
         position: 'VP Finance', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
+        photoUrl: 'assets/pages/team-photos/shireen.png', 
         statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
     },
     { 
@@ -54,7 +54,7 @@ export const TEAM: TeamMember[] = [
         name: 'Daksh Mathur', 
         year: 'Fourth Year',
         position: 'VP Tech', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
+        photoUrl: 'assets/pages/team-photos/daksh.png', 
         statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
     },
     { 
@@ -62,7 +62,7 @@ export const TEAM: TeamMember[] = [
         name: 'Luke Winger', 
         year: 'Second Year',
         position: 'Court & Event Manager', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
+        photoUrl: 'assets/pages/team-photos/Luke.png', 
         statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
     },
     { 
@@ -70,7 +70,7 @@ export const TEAM: TeamMember[] = [
         name: 'Zara Shaikh', 
         year: 'Third Year',
         position: 'Court & Event Manager', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
+        photoUrl: 'assets/pages/team-photos/zara.png', 
         statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
     },
     { 
@@ -78,7 +78,7 @@ export const TEAM: TeamMember[] = [
         name: 'Hayate Tanaka', 
         year: 'Third Year',
         position: 'Court & Event Manager', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
+        photoUrl: 'assets/pages/team-photos/Hayate.png', 
         statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
     },
     { 
@@ -86,28 +86,12 @@ export const TEAM: TeamMember[] = [
         name: 'Kyle Lee', 
         year: 'Third Year',
         position: 'Court & Event Manager', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
+        photoUrl: 'assets/pages/team-photos/Kyle.png', 
         statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
     },
     { 
         id: 't12', 
         name: 'Omar Dawoud', 
-        year: 'Fourth Year',
-        position: 'Tech Coordinator', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
-        statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
-    },
-    { 
-        id: 't13', 
-        name: 'Brooklyn Cheng', 
-        year: 'Fourth Year',
-        position: 'Tech Coordinator', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
-        statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
-    },
-    { 
-        id: 't14', 
-        name: 'Foram Patel', 
         year: 'Fourth Year',
         position: 'Tech Coordinator', 
         photoUrl: 'https://picsum.photos/seed/team6/400/400', 
