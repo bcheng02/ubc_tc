@@ -19,8 +19,14 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.allEvents = this.data.events();
-    this.upcomingEvents = this.allEvents.filter(e => !isPastEvent(e));
-    this.pastEvents = this.allEvents.filter(e => isPastEvent(e));
+
+    this.upcomingEvents = this.allEvents
+      .filter(e => !isPastEvent(e))
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  
+    this.pastEvents = this.allEvents
+      .filter(e => isPastEvent(e))
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // newest first
   }
 
   formatDate(date: string | Date): string {
