@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgIf, NgFor, DatePipe } from '@angular/common';
@@ -9,8 +9,9 @@ import { DataService } from '../../services/data.service';
     selector: 'app-home',
     standalone: true,
     imports: [RouterLink, FormsModule, NgIf, NgFor, DatePipe],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     template: `
-<section class="relative w-full h-[95vh] overflow-hidden">
+<section class="relative w-full h-[100vh] overflow-hidden">
   <!-- Hero Video -->
   <video
     autoplay
@@ -28,122 +29,170 @@ import { DataService } from '../../services/data.service';
   <div class="absolute inset-0 bg-black/0"></div> <!-- fully transparent overlay -->
 
   <!-- Hero Content -->
-  <div class="relative z-18 flex flex-col justify-center items-center text-center h-full">
-    <h1 class="text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg">
-      Join the UBC Tennis Circle
-    </h1>
-    <p class="mt-4 text-white text-lg md:text-2xl opacity-90 max-w-2xl drop-shadow-md">
-      Tournaments, workshops, socials — a tennis community for all skill levels.
-    </p>
+  <div class="relative z-18 flex flex-col justify-between items-center text-center h-full px-4 py-12">
+    <div class="flex-1 flex flex-col justify-center items-center">
+      <h1 class="text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg">
+        Join the Circle
+      </h1>
+      <p class="mt-4 text-white text-lg md:text-2xl opacity-90 max-w-2xl drop-shadow-md">
+        The Largest Tennis Club on Campus
+      </p>
 
-    <div class="mt-8 flex flex-col sm:flex-row gap-6">
-      <a href="http://docs.google.com/forms/d/e/1FAIpQLScLBPwS5roY4Dc-vf0VB0WZO7MioNhUtXOfJiTGAdNUB2rkjg/viewform" class="btn-primary rounded-full px-12 py-5 text-xl font-semibold">
-        Become a Member
-      </a>
-      <a routerLink="/events" class="btn-secondary rounded-full px-12 py-5 text-xl font-semibold">
-        Browse Events
-      </a>
+      <div class="mt-8 flex flex-col sm:flex-row gap-6">
+        <a href="http://docs.google.com/forms/d/e/1FAIpQLScLBPwS5roY4Dc-vf0VB0WZO7MioNhUtXOfJiTGAdNUB2rkjg/viewform" class="btn-primary rounded-full px-12 py-5 text-xl font-semibold">
+          Become a Member
+        </a>
+        <a routerLink="/events" class="btn-secondary rounded-full px-12 py-5 text-xl font-semibold">
+          Browse Events
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats on Hero -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl w-full mb-8">
+      <div class="card-hero-stat p-4 md:p-6">
+        <div class="stat-icon-hero w-10 h-10 md:w-12 md:h-12 rounded-full mx-auto mb-2 md:mb-3 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="text-2xl md:text-4xl font-bold text-white">200+</div>
+        <div class="text-xs md:text-sm text-white/80 mt-1">Members</div>
+      </div>
+
+      <div class="card-hero-stat p-4 md:p-6">
+        <div class="stat-icon-hero w-10 h-10 md:w-12 md:h-12 rounded-full mx-auto mb-2 md:mb-3 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        <div class="text-2xl md:text-4xl font-bold text-white">15+</div>
+        <div class="text-xs md:text-sm text-white/80 mt-1">Events Per Year</div>
+      </div>
+
+      <div class="card-hero-stat p-4 md:p-6">
+        <div class="stat-icon-hero w-10 h-10 md:w-12 md:h-12 rounded-full mx-auto mb-2 md:mb-3 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="text-2xl md:text-4xl font-bold text-white">{{ yearsRunning }}</div>
+        <div class="text-xs md:text-sm text-white/80 mt-1">Years Running</div>
+      </div>
+
+      <div class="card-hero-stat p-4 md:p-6">
+        <div class="stat-icon-hero w-10 h-10 md:w-12 md:h-12 rounded-full mx-auto mb-2 md:mb-3 flex items-center justify-center">
+          <img src="assets/handshake.svg" alt="Handshake icon" class="w-5 h-5 md:w-6 md:h-6 brightness-0 invert" />
+        </div>
+        <div class="text-2xl md:text-4xl font-bold text-white">12</div>
+        <div class="text-xs md:text-sm text-white/80 mt-1">Partner Sponsors</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Sponsors Scroller Section -->
 <section class="section-white py-8">
   <div class="container text-center">
-    <div class="stats-scroller mt-2 pb-2">
-      <div class="stats-track">
-        <!-- First set of stats -->
-        <div class="stats-group">
-          <div class="card-ghost p-6">
-            <div class="stat-icon w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-            </div>
-            <div class="text-4xl font-bold text-[var(--ubc-blue-600)]">500+</div>
-            <div class="text-sm opacity-70 mt-1">Active Members</div>
+    <h2 class="text-2xl font-bold text-[var(--ubc-deep-blue)] mb-6">Our Partners & Sponsors</h2>
+    <div class="sponsors-scroller mt-2 pb-2">
+      <div class="sponsors-track" #sponsorsTrack>
+        <!-- First set of sponsors -->
+        <div class="sponsors-group">
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/juiceTruck.png" alt="Juice Truck" class="sponsor-logo sponsor-logo--big" />
           </div>
-
-          <div class="card-ghost p-6">
-            <div class="stat-icon w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-            </div>
-            <div class="text-4xl font-bold text-[var(--ubc-blue-600)]">50+</div>
-            <div class="text-sm opacity-70 mt-1">Events Per Year</div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/JJBean.png" alt="JJ Bean" class="sponsor-logo" />
           </div>
-
-          <div class="card-ghost p-6">
-            <div class="stat-icon w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
-            <div class="text-4xl font-bold text-[var(--ubc-blue-600)]">{{ yearsRunning }}</div>
-            <div class="text-sm opacity-70 mt-1">Years Running</div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/beanAroundTheWorld.png" alt="Bean Around The World" class="sponsor-logo sponsor-logo--xxl" />
           </div>
-
-          <div class="card-ghost p-6">
-            <div class="stat-icon w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <img src="assets/handshake.svg" alt="Handshake icon" class="w-6 h-6" />
-            </div>
-            <div class="text-4xl font-bold text-[var(--ubc-blue-600)]">12</div>
-            <div class="text-sm opacity-70 mt-1">Partner Sponsors</div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/guru.png" alt="Guru" class="sponsor-logo" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/bodyEnergyClub.png" alt="Body Energy Club" class="sponsor-logo sponsor-logo--big" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/hoochyBooch.png" alt="Hoochy Booch Kombucha" class="sponsor-logo sponsor-logo--xxl" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/boosterJuice.avif" alt="Booster Juice" class="sponsor-logo" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/rainOrShine.png" alt="Rain or Shine" class="sponsor-logo sponsor-logo--sm" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/gloryJuice.png" alt="Glory Juice" class="sponsor-logo sponsor-logo--xxl" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/poppi.svg" alt="Poppi" class="sponsor-logo sponsor-logo--sm" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/joDeli.avif" alt="Jo Deli" class="sponsor-logo" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/redBull.png" alt="Red Bull" class="sponsor-logo" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/teadot.png" alt="Tea Dot" class="sponsor-logo sponsor-logo--xxl" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/pacificPoke.png" alt="Pacific Poke" class="sponsor-logo sponsor-logo--pp-small" />
           </div>
         </div>
 
         <!-- Duplicate set for seamless loop -->
-        <div class="stats-group">
-          <div class="card-ghost p-6">
-            <div class="stat-icon w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-            </div>
-            <div class="text-4xl font-bold text-[var(--ubc-blue-600)]">500+</div>
-            <div class="text-sm opacity-70 mt-1">Active Members</div>
+        <div class="sponsors-group">
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/juiceTruck.png" alt="Juice Truck" class="sponsor-logo sponsor-logo--big" />
           </div>
-
-          <div class="card-ghost p-6">
-            <div class="stat-icon w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-            </div>
-            <div class="text-4xl font-bold text-[var(--ubc-blue-600)]">50+</div>
-            <div class="text-sm opacity-70 mt-1">Events Per Year</div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/JJBean.png" alt="JJ Bean" class="sponsor-logo" />
           </div>
-
-          <div class="card-ghost p-6">
-            <div class="stat-icon w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
-            <div class="text-4xl font-bold text-[var(--ubc-blue-600)]">{{ yearsRunning }}</div>
-            <div class="text-sm opacity-70 mt-1">Years Running</div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/beanAroundTheWorld.png" alt="Bean Around The World" class="sponsor-logo sponsor-logo--xxl" />
           </div>
-
-          <div class="card-ghost p-6">
-            <div class="stat-icon w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <img src="assets/handshake.svg" alt="Handshake icon" class="w-6 h-6" />
-            </div>
-            <div class="text-4xl font-bold text-[var(--ubc-blue-600)]">12</div>
-            <div class="text-sm opacity-70 mt-1">Partner Sponsors</div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/guru.png" alt="Guru" class="sponsor-logo" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/bodyEnergyClub.png" alt="Body Energy Club" class="sponsor-logo sponsor-logo--big" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/hoochyBooch.png" alt="Hoochy Booch Kombucha" class="sponsor-logo sponsor-logo--xxl" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/boosterJuice.avif" alt="Booster Juice" class="sponsor-logo" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/rainOrShine.png" alt="Rain or Shine" class="sponsor-logo sponsor-logo--sm" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/gloryJuice.png" alt="Glory Juice" class="sponsor-logo sponsor-logo--xxl" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/poppi.svg" alt="Poppi" class="sponsor-logo sponsor-logo--sm" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/joDeli.avif" alt="Jo Deli" class="sponsor-logo" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/redBull.png" alt="Red Bull" class="sponsor-logo" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/teadot.png" alt="Tea Dot" class="sponsor-logo sponsor-logo--xxl" />
+          </div>
+          <div class="sponsor-card">
+            <img src="assets/pages/partner logos/pacificPoke.png" alt="Pacific Poke" class="sponsor-logo sponsor-logo--pp-small" />
           </div>
         </div>
       </div>
@@ -200,6 +249,164 @@ import { DataService } from '../../services/data.service';
         </div>
     </section>
 
+    <!-- Why Become a Member Section -->
+    <section class="container mt-16">
+        <h2 class="text-3xl font-bold text-left text-[var(--ubc-deep-blue)] mb-8">Why Become a Member?</h2>
+        <div class="grid md:grid-cols-3 gap-6 max-w-full">
+            <!-- Non-Member -->
+            <div class="card p-6 flex flex-col">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-[var(--ubc-deep-blue)] mb-2">Non-Member</h3>
+                    <div class="text-4xl font-extrabold text-gray-500">$0</div>
+                </div>
+                <div class="space-y-4 flex-grow">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500">No membership card</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500">No sponsor discounts</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500">No WhatsApp group access</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500">No early access to sessions</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500">Standard event rates</span>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <div class="bg-gray-100 text-gray-500 text-center rounded-full py-3 font-semibold cursor-not-allowed">
+                        No Membership
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prime Member (Center) -->
+            <div class="card-prime p-6 rounded-b-lg flex flex-col border-4 border-[var(--ubc-blue-600)] bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden shadow-2xl rounded-b-lg">
+                <div class="absolute -top-1 left-1/2 transform -translate-x-1/2 bg-[var(--ubc-blue-600)] text-white text-xs font-bold px-4 py-1.5 rounded-b-lg shadow-lg z-20">BEST VALUE</div>
+                <div class="text-center mb-6 relative z-10 mt-4">
+                    <h3 class="text-2xl font-bold text-[var(--ubc-deep-blue)] mb-2">Prime Member</h3>
+                    <div class="text-4xl font-extrabold text-[var(--ubc-blue-600)]">$20</div>
+                </div>
+                <div class="space-y-4 flex-grow relative z-10">
+                    <div class="text-sm font-semibold text-[var(--ubc-deep-blue)] mb-2">Everything in General Member, plus:</div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">UBCTC Membership Card</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">Discounts and perks from our sponsors, including Rackets & Runners, Kintec, and more</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">Invite Link to UBCTC WhatsApp Group Chat</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">Early access to our hitting sessions!</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">Discounted rates to our social events & tennis lessons <span class="font-semibold text-[var(--ubc-blue-600)]">(NEW!)</span></span>
+                    </div>
+                    <div class="flex items-start gap-3 bg-yellow-50 -mx-2 px-2 py-2 rounded">
+                        <svg class="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm font-semibold text-yellow-900">2 FREE beginner group tennis lessons with one of our instructors (coming soon)!</span>
+                    </div>
+                </div>
+                <div class="mt-6 relative z-10">
+                    <a href="http://docs.google.com/forms/d/e/1FAIpQLScLBPwS5roY4Dc-vf0VB0WZO7MioNhUtXOfJiTGAdNUB2rkjg/viewform" class="btn-primary w-full text-center rounded-full py-3 block">Join as Prime Member</a>
+                </div>
+            </div>
+
+            <!-- General Member -->
+            <div class="card p-6 flex flex-col border-2 border-[var(--ubc-blue-600)]">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-[var(--ubc-deep-blue)] mb-2">General Member</h3>
+                    <div class="text-4xl font-extrabold text-[var(--ubc-blue-600)]">$10</div>
+                </div>
+                <div class="space-y-4 flex-grow">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">UBCTC Membership Card</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">Discounts and perks from our sponsors, including Rackets & Runners, Kintec, and more</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">Invite Link to UBCTC WhatsApp Group Chat</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">Early access to our hitting sessions!</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-sm">Discounted rates to our social events & tennis lessons <span class="font-semibold text-[var(--ubc-blue-600)]">(NEW!)</span></span>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="http://docs.google.com/forms/d/e/1FAIpQLScLBPwS5roY4Dc-vf0VB0WZO7MioNhUtXOfJiTGAdNUB2rkjg/viewform" class="btn-primary w-full text-center rounded-full py-3 block">Join as General Member</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed (Behold) -->
+    <section class="container mt-16">
+      <h2 class="text-3xl font-bold text-left text-[var(--ubc-deep-blue)] mb-8">Latest on Instagram</h2>
+    </section>
+    <!-- Full-bleed Behold widget -->
+    <div style="display:block;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);">
+      <div class="px-4 sm:px-6 md:px-8 lg:px-0 xl:px-0">
+        <div data-behold-id="aZ67gOlP79kXj6a5t6Nx"></div>
+      </div>
+    </div>
+
+    
+
     <section class="container mt-16 grid md:grid-cols-2 gap-8 pb-16">
         <div class="card p-6 flex flex-col">
             <div class="font-semibold mb-2 text-[var(--ubc-deep-blue)]">Join the Mailing List</div>
@@ -252,7 +459,7 @@ import { DataService } from '../../services/data.service';
     </section>
     `,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
     // Google Form entry IDs (replace with actual entry.<id> values)
     entryFullNameId = 'entry.X_fullName';
     entryStudentNumberId = 'entry.X_studentNumber';
@@ -267,6 +474,23 @@ export class HomeComponent implements OnInit {
     contactSent = false;
     yearsRunning = new Date().getFullYear() - 2016;
 
+    sponsors: string[] = [
+        'Juice Truck',
+        'JJ Bean',
+        'Bean Around The World',
+        'Guru',
+        'Body Energy Club',
+        'Hoochy Booch Kombucha',
+        'Booster Juice',
+        'Rain or Shine',
+        'Glory Juice',
+        'Poppi',
+        'Jo Deli',
+        'Red Bull',
+        'Tea Dot',
+        'Pacific Poke'
+    ];
+
     constructor(private data: DataService) { }
 
     ngOnInit() {
@@ -275,6 +499,22 @@ export class HomeComponent implements OnInit {
             .filter(e => e.registrationStatus === 'Open')
             .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
             .slice(0, 3);
+    }
+
+    ngAfterViewInit(): void {
+        this.loadBeholdScript();
+    }
+
+    private loadBeholdScript(): void {
+        const src = 'https://w.behold.so/widget.js';
+        if (typeof document === 'undefined') return;
+        const existing = document.querySelector(`script[src="${src}"]`);
+        if (!existing) {
+            const s = document.createElement('script');
+            s.type = 'module';
+            s.src = src;
+            document.head.appendChild(s);
+        }
     }
 
     subscribe() {

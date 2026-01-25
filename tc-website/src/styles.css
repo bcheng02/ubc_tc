@@ -84,6 +84,9 @@ body {
     color: white;
     font-weight: 600;
     transition: all 200ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-primary:hover {
@@ -97,6 +100,9 @@ body {
     border: 2px solid white;
     font-weight: 600;
     transition: all 200ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-secondary:hover {
@@ -117,10 +123,40 @@ body {
     box-shadow: 0 10px 24px rgba(26, 54, 93, .18);
 }
 
+/* Hero Stats Cards */
+.card-hero-stat {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    backdrop-filter: blur(10px);
+    transition: all 300ms ease;
+}
+
+.card-hero-stat:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon-hero {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 300ms ease;
+}
+
+.card-hero-stat:hover .stat-icon-hero {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
 /* Stats section styles */
 .section-blue {
     background: linear-gradient(135deg, var(--ubc-blue-700), var(--ubc-blue-500));
     color: #ffffff;
+}
+
+.section-white {
+    background: #ffffff;
 }
 
 .card-ghost {
@@ -148,56 +184,112 @@ body {
     transform: scale(1.1);
 }
 
-/* Stats infinite scroller - FIXED */
-.stats-scroller {
+/* Sponsors infinite scroller with drag support */
+.sponsors-scroller {
     overflow: hidden;
     position: relative;
     width: 100%;
+    cursor: grab;
+    user-select: none;
 }
 
-.stats-track {
+.sponsors-scroller:active {
+    cursor: grabbing;
+}
+
+.sponsors-track {
     display: flex;
     width: max-content;
-    animation: stats-scroll 20s linear infinite;
+    animation: sponsors-scroll 40s linear infinite;
 }
 
-.stats-track:hover {
+.sponsors-track:hover {
     animation-play-state: paused;
 }
 
-.stats-group {
+.sponsors-group {
     display: flex;
-    gap: 1.5rem;
-    padding: 0 0.75rem;
+    gap: 2rem;
+    padding: 0 1rem;
 }
 
-.card-ghost {
-    min-width: 180px;
+.sponsor-card {
+    min-width: 140px;
+    height: 80px;
+    padding: 1rem;
+    background: #ffffff;
+    border: 1px solid rgba(37, 99, 235, 0.1);
+    border-radius: 0.75rem;
     flex-shrink: 0;
+    transition: all 300ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
-@keyframes stats-scroll {
+.sponsor-card:hover {
+    background: rgba(37, 99, 235, 0.05);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(29, 78, 216, 0.15);
+}
+
+.sponsor-logo {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Specific adjustment: make Pacific Poke logo ~30% smaller */
+.sponsor-logo--pp-small {
+    height: 50%;
+}
+
+/* Make select logos appear larger inside their cards */
+.sponsor-logo--big {
+    transform: scale(1.2);
+}
+
+/* Extra-large bump for select marks */
+.sponsor-logo--xl {
+    transform: scale(1.35);
+}
+
+/* Extra-extra-large bump for select marks */
+.sponsor-logo--xxl {
+    transform: scale(1.5);
+}
+
+/* Slightly smaller logos */
+.sponsor-logo--sm {
+    transform: scale(0.9);
+}
+
+@keyframes sponsors-scroll {
     0% {
         transform: translateX(0);
     }
 
     100% {
-        transform: translateX(calc(-50% - 0.75rem));
+        transform: translateX(calc(-50% - 1rem));
     }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .stats-group {
+    .sponsors-group {
         gap: 1rem;
     }
 
-    .card-ghost {
-        min-width: 150px;
-        padding: 1rem;
+    .sponsor-card {
+        min-width: 120px;
+        height: 70px;
+        padding: 0.75rem;
     }
 
-    @keyframes stats-scroll {
+    @keyframes sponsors-scroll {
         0% {
             transform: translateX(0);
         }
@@ -208,6 +300,24 @@ body {
     }
 }
 
+/* Touch drag support for sponsors scroller */
+@media (hover: none) and (pointer: coarse) {
+    .sponsors-scroller {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .sponsors-scroller::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sponsors-track {
+        animation: none;
+    }
+}
 
 /* Simple fade in up animation */
 @keyframes fadeInUp {
