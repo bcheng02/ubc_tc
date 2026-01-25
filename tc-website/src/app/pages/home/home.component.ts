@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgIf, NgFor, DatePipe } from '@angular/common';
@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
     selector: 'app-home',
     standalone: true,
     imports: [RouterLink, FormsModule, NgIf, NgFor, DatePipe],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     template: `
 <section class="relative w-full h-[100vh] overflow-hidden">
   <!-- Hero Video -->
@@ -393,6 +394,19 @@ import { DataService } from '../../services/data.service';
         </div>
     </section>
 
+    <!-- Instagram Feed (Behold) -->
+    <section class="container mt-16">
+      <h2 class="text-3xl font-bold text-left text-[var(--ubc-deep-blue)] mb-8">Latest on Instagram</h2>
+    </section>
+    <!-- Full-bleed Behold widget -->
+    <div style="display:block;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);">
+      <div class="px-4 sm:px-6 md:px-8 lg:px-0 xl:px-0">
+        <div data-behold-id="aZ67gOlP79kXj6a5t6Nx"></div>
+      </div>
+    </div>
+
+    
+
     <section class="container mt-16 grid md:grid-cols-2 gap-8 pb-16">
         <div class="card p-6 flex flex-col">
             <div class="font-semibold mb-2 text-[var(--ubc-deep-blue)]">Join the Mailing List</div>
@@ -445,7 +459,7 @@ import { DataService } from '../../services/data.service';
     </section>
     `,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
     // Google Form entry IDs (replace with actual entry.<id> values)
     entryFullNameId = 'entry.X_fullName';
     entryStudentNumberId = 'entry.X_studentNumber';
@@ -485,6 +499,22 @@ export class HomeComponent implements OnInit {
             .filter(e => e.registrationStatus === 'Open')
             .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
             .slice(0, 3);
+    }
+
+    ngAfterViewInit(): void {
+        this.loadBeholdScript();
+    }
+
+    private loadBeholdScript(): void {
+        const src = 'https://w.behold.so/widget.js';
+        if (typeof document === 'undefined') return;
+        const existing = document.querySelector(`script[src="${src}"]`);
+        if (!existing) {
+            const s = document.createElement('script');
+            s.type = 'module';
+            s.src = src;
+            document.head.appendChild(s);
+        }
     }
 
     subscribe() {
