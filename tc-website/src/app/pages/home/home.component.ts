@@ -507,8 +507,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     
       this.events = all
         .filter(e => {
-          const eventDate = new Date(e.date);
-          eventDate.setHours(0, 0, 0, 0);
+          const [year, month, day] = e.date.toString().split('-').map(Number);
+          const eventDate = new Date(year, month - 1, day); // LOCAL midnight
           return eventDate >= today;
         })
         .sort(

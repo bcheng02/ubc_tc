@@ -15,8 +15,14 @@ export interface EventItem {
 }
 
 export function isPastEvent(e: EventItem): boolean {
-    const d = new Date(e.date);
-    const today = new Date();
-    return d.getTime() < new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
-}
+    // Force local date parsing (YYYY-MM-DD)
+    const [year, month, day] = e.date.toString().split('-').map(Number);
+  
+    // End of the event day in LOCAL time
+    const eventEnd = new Date(year, month - 1, day, 23, 59, 59, 999);
+  
+    return new Date().getTime() > eventEnd.getTime();
+  }
+  
+  
 
