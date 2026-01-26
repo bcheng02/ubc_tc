@@ -94,7 +94,7 @@ export const TEAM: TeamMember[] = [
         name: 'Omar Dawoud', 
         year: 'Fourth Year',
         position: 'Tech Coordinator', 
-        photoUrl: 'https://picsum.photos/seed/team6/400/400', 
+        photoUrl: 'assets/pages/team-photos/Omar.jpeg', 
         statement: 'Building connections and fostering a sense of belonging. Our volunteers are the heart of this club, and I\'m honored to work with them.' 
     }
 ];
